@@ -49,11 +49,10 @@ class DBController
 
     insert(callback, collection, data)
     {
-        if(data.length === 1)
-            this.connectionDB.db(this.dbname).collection(collection).insertOne(data, (err, r)=>{
-                if(err) throw err;
-                callback(r);
-            });
+        this.connectionDB.db(this.dbname).collection(collection).insertOne(data, (err, r)=>{
+            if(err) throw err;
+            callback(r);
+        });
     }
 
     delete(collection, filter)

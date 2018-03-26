@@ -9,26 +9,27 @@
 </head>
 <body>
 <h1><%= title %></h1>
-    <form action="users/create" method="post">
+    <form action="create" method="post">
         <div class="grid-container">
             <div class="grid-x grid-padding-x">
                 <div class="medium-6 cell">
                     <label>Nome
-                        <input type="text" placeholder="Nome">
+                        <input type="text" placeholder="Nome" name="nome">
                     </label>
                 </div>
                 <div class="medium-6 cell">
                     <label>Email
-                        <input type="text" placeholder="Email">
+                        <input type="email" placeholder="Email" name="email">
                     </label>
                 </div>
                 <div class="medium-6 cell">
                     <label>Idade
-                        <input type="number" placeholder="Idade" min="18" max="100">
+                        <input type="number" placeholder="Idade" min="18" max="100" name="idade">
                     </label>
                 </div>
             </div>
         </div>
         <button type="submit" class="primary button">Cadastrar</button>
+        <a class="secondary button" href="">Voltar</a>
     </form>
 </body>

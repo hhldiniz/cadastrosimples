@@ -18,12 +18,15 @@ router.post('/create', function(req,res){
   let idade_usuario = req.body.idade;
   dbController.connect(()=>{
     dbController.insert(r=>{
-      if(r.nInserted > 0)
-      {
-        res.redirect("index");
-      }
+        console.log(r);
+        res.redirect("");
     },"users",{nome: nome_usuario, email: email_usuario, idade: idade_usuario});
   });
+});
+
+router.get(/update\/([\w]+)/, function (req, res) {
+    let id = req.params[0];
+
 });
 
 module.exports = router;

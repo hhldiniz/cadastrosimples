@@ -22,9 +22,9 @@
       <% users.forEach(user=>{ %>
         <tr>
           <td><%-user['nome']%></td>
-          <td></td>
-          <td></td>
-          <td>Editar|Excluir</td>
+          <td><%-user['email']%></td>
+          <td><%-user['idade']%></td>
+          <td><a href="users/update/<%-user['_id']%>">Editar</a>|<a href="users/delete/<%-user['_id']%>">Excluir</a></td>
         </tr>
       <% }); %>
       </tbody>
