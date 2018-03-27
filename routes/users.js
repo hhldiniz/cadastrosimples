@@ -25,11 +25,14 @@ router.post('/create', function(req,res){
 });
 
 router.get(/update\/([\w]+)/, function (req, res) {
-    let id = req.params[0];
+    let userid = req.params[0];
+    userid = "ObjectId(\""+userid+"\")";
+    console.log(userid);
+    let filter = {"_id": userid};
     dbController.connect(()=>{
         dbController.selectOne(user=>{
             res.render("update", {title:"Editar Usuário", user:user});
-        }, "users", {'_id':`ObjectId('${id}')`});
+        }, "users", filter);
     });
 });
 
@@ -48,8 +51,12 @@ router.post(/update\/([\w]+)/, function(req,res){
 router.get(/delete\/([\w]+)/, function(req,res){
     let id = req.params[0];
     dbController.connect(()=>{
-       dbController.delete(()=>{
+       dbController.delete(r=>{
+            if(r.deletedCount>0)
+            {
 
+            }
+            res.redirect("/");
        },"users",{"_id":`ObjectId('${id}')`});
     });
 });

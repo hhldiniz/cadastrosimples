@@ -65,7 +65,10 @@ class DBController
 
     delete(callback, collection, filter)
     {
-
+        this.connectionDB.db(this.dbname).collection(collection).removeOne(filter, (err,r)=>{
+            if(err) throw err;
+            callback(r);
+        })
     }
 
     update(callback, collection, filter, data)
