@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/foundation.min.css"/>
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/foundation.min.js"></script>
+</head>
+<body>
+    <form action="users/update" method="post">
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+                <div class="medium-6 cell">
+                    <label>Nome:
+                        <input type="text" value=<%-user['nome']%>/>
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Email:
+                        <input type="email" value=<%-user['email']%>/>
+                    </label>
+                </div>
+                <div class="medium-6 cell">
+                    <label>Idade:
+                        <input type="number" min="18" max="100" value=<%-user['idade']%>/>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="primary button">Atualizar</button>
+        <button type="button">Voltar</button>
+    </form>
+</body>
+</html>

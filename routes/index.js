@@ -6,7 +6,7 @@ const dbController = new controllerClass("localhost",27017, "", "", "cadastro_si
 /* GET home page. */
 router.get('/', function(req, res) {
   dbController.connect(()=>{
-      dbController.select(users=> {
+      dbController.selectMany(users=> {
           res.render('index', { title: 'Cadastro Simples', users: users});
       },"users",{});
       });

@@ -26,7 +26,32 @@ router.post('/create', function(req,res){
 
 router.get(/update\/([\w]+)/, function (req, res) {
     let id = req.params[0];
+    dbController.connect(()=>{
+        dbController.selectOne(user=>{
+            res.render("update", {title:"Editar Usuário", user:user});
+        }, "users", {'_id':`ObjectId('${id}')`});
+    });
+});
 
+router.post(/update\/([\w]+)/, function(req,res){
+    let id = req.params[0];
+    let nome_usuario = req.body.nome;
+    let email_usuario = req.body.email;
+    let idade_usuario = req.body.idade;
+    dbController.connect(()=>{
+        dbController.update(r=>{
+
+        },"users",{'_id':id},{nome: nome_usuario, email:email_usuario, idade:idade_usuario})
+    })
+});
+
+router.get(/delete\/([\w]+)/, function(req,res){
+    let id = req.params[0];
+    dbController.connect(()=>{
+       dbController.delete(()=>{
+
+       },"users",{"_id":`ObjectId('${id}')`});
+    });
 });
 
 module.exports = router;

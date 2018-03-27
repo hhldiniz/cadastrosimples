@@ -39,7 +39,15 @@ class DBController
         this.connectionDB.disconnect();
     }
 
-    select(callback, collection, filter)
+    selectOne(callback, collection, filter)
+    {
+        this.connectionDB.db(this.dbname).collection(collection).findOne(filter,(err, doc)=>{
+            if(err) throw err;
+            callback(doc);
+        });
+    }
+
+    selectMany(callback, collection, filter)
     {
         this.connectionDB.db(this.dbname).collection(collection).find(filter).toArray((err, docs)=>{
             if(err) throw err;
@@ -55,14 +63,17 @@ class DBController
         });
     }
 
-    delete(collection, filter)
+    delete(callback, collection, filter)
     {
 
     }
 
-    update(collection, filter, data)
+    update(callback, collection, filter, data)
     {
-
+        this.connectionDB.db(this.dbname).collection(collection).updateOne(filter, {set:data}, (err,r)=>{
+           if(err) throw err;
+           callback(r);
+        });
     }
 }
 
