@@ -5,7 +5,7 @@ const dbController = new controllerClass("localhost",27017, "", "", "cadastro_si
 
 /* GET users listing. */
 router.get('/', function(req, res) {
-  res.send('respond with a resource');
+  res.redirect("index.ejs");
 });
 
 router.get('/create', function (req, res) {
